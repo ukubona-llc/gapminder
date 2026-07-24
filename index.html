@@ -184,6 +184,69 @@
     .row .shared{grid-column:1;}
   }
 </style>
+<!-- APPENDED 2026-07-24 — journal tab styles only, nothing above modified -->
+<style>
+  .journal-intro{
+    font-size:14px;color:var(--ink-dim);margin:0 2px 20px;max-width:64ch;
+  }
+  .journal-intro strong{color:var(--ink);font-weight:500;}
+  .journal{display:flex;flex-direction:column;gap:16px;}
+  .entry{
+    border:1px solid var(--line);border-radius:8px;
+    padding:20px 22px;background:var(--bg);
+  }
+  .entry-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    margin-bottom:10px;flex-wrap:wrap;gap:6px 14px;
+  }
+  .entry-voice{
+    font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;
+    text-transform:uppercase;padding:3px 10px;border-radius:20px;
+    border:1px solid currentColor;
+  }
+  .entry.gemini .entry-voice{color:var(--teal);}
+  .entry.grok .entry-voice{color:var(--rose);}
+  .entry.gpt .entry-voice{color:var(--amber);}
+  .entry.claude .entry-voice{color:var(--violet);}
+  .entry-meta{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-dim);}
+  .entry-body{font-size:15px;color:var(--ink-dim);margin:0;}
+  .entry-body strong{color:var(--ink);font-weight:500;}
+  .entry-body em{color:var(--ink);font-style:italic;}
+  .entry-tag{
+    font-family:'DM Mono',monospace;font-size:10.5px;color:var(--ink-dim);
+    margin-top:10px;letter-spacing:.03em;
+  }
+  .journal-synth{
+    margin-top:8px;padding:22px 24px;border-left:3px solid var(--violet);
+    background:var(--bg-panel);border-radius:0 8px 8px 0;
+  }
+  .journal-synth .tag{
+    font-family:'DM Mono',monospace;font-size:11px;color:var(--violet);
+    letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;
+  }
+  .journal-synth p{margin:0 0 10px;font-size:15px;color:var(--ink);}
+  .journal-synth p:last-child{margin-bottom:0;}
+
+  /* APPENDED 2026-07-24 — equation block for the ChatGPT entry */
+  .eqn-row{
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;
+  }
+  .eqn-block{
+    border:1px solid var(--line);border-radius:6px;
+    padding:16px 14px;background:var(--bg-panel);
+  }
+  .eqn{
+    font-family:'DM Mono',monospace;font-size:17px;color:var(--amber);
+    margin-bottom:8px;letter-spacing:.02em;
+  }
+  .eqn-cadence{
+    font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-dim);
+    line-height:1.5;
+  }
+  @media(max-width:640px){
+    .eqn-row{grid-template-columns:1fr;}
+  }
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -212,6 +275,7 @@
       <button class="tab active" data-target="tab-uk">Ukubona · Pentadic Autoencoder</button>
       <button class="tab" data-target="tab-ted">Rosling · TED 2006 (16:21)</button>
       <button class="tab" data-target="tab-split">Side by side</button>
+      <button class="tab" data-target="tab-journal">Journal · Roundtable Voices</button>
     </div>
 
     <div id="tab-uk" class="tab-panel active">
@@ -240,6 +304,65 @@
           <iframe src="https://www.youtube.com/embed/hVimVzgtD6w?start=981" title="Rosling TED (split view)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
         </div>
         <p class="embed-note">Rosling: databases at the base, design tools blooming above.</p>
+      </div>
+    </div>
+
+    <!-- APPENDED 2026-07-24 — new panel only, tab-uk / tab-ted / tab-split untouched -->
+    <div id="tab-journal" class="tab-panel journal">
+      <p class="journal-intro"><strong>Append-only.</strong> Each entry below is a paraphrased, dated, attributed record of one voice in the roundtable that produced this artifact's framing — Gemini, Grok, ChatGPT, and this conversation (Claude) in sequence, followed by the Ukubona synthesis. Nothing here is quoted verbatim; each is a faithful restatement in the ledger's own words, entered once and never revised.</p>
+
+      <div class="entry gemini">
+        <div class="entry-head">
+          <span class="entry-voice">Gemini</span>
+          <span class="entry-meta">2026-07-23 · Roundtable seq. 1</span>
+        </div>
+        <p class="entry-body">Named the SRTR and NHANES access architecture as a structural barrier, not an excuse — DUAs and mentor gatekeeping on one side, RDC on-site-only ESRD linkage with multi-year lead times on the other. Read the K08 stall as a case of <strong>signal fighting friction</strong> rather than a personal failing, and pointed toward concrete moves: contact the collaborator directly, escalate through the thesis committee if the Aim 1 handoff felt improper, and treat the existing Gapminder-style artifact as a seed for a real synthetic-data demo that could attract collaborators or funding.</p>
+        <div class="entry-tag">Ref: SRTR data request process · NHANES/USRDS ESRD linkage restrictions</div>
+      </div>
+
+      <div class="entry grok">
+        <div class="entry-head">
+          <span class="entry-voice">Grok</span>
+          <span class="entry-meta">2026-07-23 · Roundtable seq. 2</span>
+        </div>
+        <p class="entry-body">Mapped the same stall onto the gospel/SGD lattice (Landscape → UB → SGD → UI-UX → Ecosystem): extreme landscape friction forces optimization toward institutional survival instead of scientific truth. Reframed <em>Ukubona LLC itself</em> as the researcher's engineered bypass — not abandonment of rigor but a systems builder's response to a concrete wall. Proposed forcing a scalar decision with the committee (a scoped, fully-controlled thesis objective), architecting a proof-of-concept API wrapper for the "fantasy" pipeline, and documenting the friction itself as a structural finding rather than a grievance.</p>
+        <div class="entry-tag">Ref: TMVES compression chain applied to grant/thesis governance</div>
+      </div>
+
+      <div class="entry gpt">
+        <div class="entry-head">
+          <span class="entry-voice">ChatGPT</span>
+          <span class="entry-meta">2026-07-23 · Roundtable seq. 3 (shared via screenshot)</span>
+        </div>
+        <p class="entry-body">Named the frustration precisely: not whining, but a statement about <strong>optimization landscape geometry</strong>. Wrote out the same gradient-descent update rule twice, side by side, to make the point concrete:</p>
+        <div class="eqn-row">
+          <div class="eqn-block">
+            <div class="eqn">θ<sub>t+1</sub> = θ<sub>t</sub> − η∇L(θ)</div>
+            <div class="eqn-cadence">every day — researcher with API access</div>
+          </div>
+          <div class="eqn-block">
+            <div class="eqn">θ<sub>t+1</sub> = θ<sub>t</sub> − η∇L(θ)</div>
+            <div class="eqn-cadence">once every 18 months — researcher waiting on DUA approvals, institutional signatures, restricted enclave scheduling, collaborator permissions</div>
+          </div>
+        </div>
+        <p class="entry-body">Same equation. Same intelligence. A learning rate apart by roughly two orders of magnitude, and the gap is entirely institutional, not cognitive. From there, proposed converting the thesis ordeal into a case-study paper — "Data Friction as a Barrier to Iterative Clinical Science" — arguing the 2010 and 2014 JAMA papers already prove the causal architecture works, so the real finding is that reproducing one's own validated method is harder than inventing it was.</p>
+        <div class="entry-tag">Ref: iteration-velocity formalization (θ update-cycle framing)</div>
+      </div>
+
+      <div class="entry claude">
+        <div class="entry-head">
+          <span class="entry-voice">Claude</span>
+          <span class="entry-meta">2026-07-24 · Roundtable seq. 4, this conversation</span>
+        </div>
+        <p class="entry-body">Affirmed the diagnosis as real and well-evidenced — the 2010/2014 JAMA papers are direct precedent for the older-donor extension, which makes the access friction more absurd, not less. Flagged a separate risk: four sequential AI roundtables can escalate each other's emotional framing into a manufactured consensus, independent of whether the underlying claim is true. Separated two distinct projects — writing the systems-level "data friction" paper versus finishing the minimum defensible thesis — and pushed toward naming the actual blocking dependency (SRTR DUA control) before choosing which project to prioritize on a clock that the systems paper doesn't have.</p>
+        <div class="entry-tag">Ref: distinguishing grievance-framing from systems-framing; committee timeline check</div>
+      </div>
+
+      <div class="journal-synth">
+        <div class="tag">Ukubona Synthesis</div>
+        <p>Rosling's career answered one failure mode: the world's data existed in full, and belief about it stayed decades stale — not from ignorance, but from a broken interface between what was known and what could be seen. The K08 stall is the same failure mode one layer down. The data existed at SRTR, NHANES, and CMS. The causal architecture existed — proven twice, in the 2010 and 2014 JAMA papers. What didn't exist was a channel to re-query that architecture at the speed a five-year mentored award actually requires.</p>
+        <p>Gapminder made public data legible in real time and stopped at Representation — the correct endpoint for a visualization tool. Ukubona's bet is the generalization one layer further: that the scarce resource was never the data, or even the insight, but <strong>iteration velocity</strong> — and that any system optimized for compliance over iteration will keep producing brilliant, static answers to a world that needed a live one.</p>
+        <p class="aphorism" style="margin-top:14px;font-family:'DM Serif Display',serif;font-style:italic;font-size:19px;color:var(--violet);">Okubala si Kulaba — counting is not seeing. Kulaba si Kubona — seeing is not deciding.</p>
       </div>
     </div>
 
